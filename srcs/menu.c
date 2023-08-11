@@ -11,8 +11,8 @@ void	print_menu(t_fdf *fdf)
 	void	*win;
 
 	y = 0;
-	mlx = fdf->mlx;
-	win = fdf->win;
+	mlx = fdf->mlx_ptr;
+	win = fdf->win_id;
 	projection = get_projection_name(fdf);
 	mlx_string_put(mlx, win, 50, y += 50, C_TEXT, projection);
 	mlx_string_put(mlx, win, 50, y += 35, C_TEXT, "Press 'ESC' to close");
@@ -36,11 +36,11 @@ static char	*get_projection_name(t_fdf *fdf)
 	char	*projection;
 
 	projection = "";
-	if (fdf->cam->projection == ISOMETRIC)
+	if (fdf->view->projection == ISOMETRIC)
 		projection = "Isometric projection";
-	else if (fdf->cam->projection == PERSPECTIVE)
+	else if (fdf->view->projection == PERSPECTIVE)
 		projection = "Perspective projection";
-	else if (fdf->cam->projection == TOP)
+	else if (fdf->view->projection == TOP)
 		projection = "Top view";
 	return (projection);
 }

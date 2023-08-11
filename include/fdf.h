@@ -17,7 +17,7 @@
 ** folder to guarantee usage by testers. 
 */
 # include <math.h>
-# include "../mlx_linux/mlx.h"
+# include "../minilibx_macos/mlx.h"
 
 /*
 ** My own libft library, completed with previously implemented functions such as

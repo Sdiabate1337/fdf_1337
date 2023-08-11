@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/30 10:36:24 by cado-car          #+#    #+#             */
-/*   Updated: 2021/10/05 22:34:23 by cado-car         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../include/fdf.h"
 
@@ -28,7 +17,7 @@ t_fdf	*init_fdf(char *file_name)
 	fdf->mlx_ptr = mlx_init();
 	fdf->win_x = WINDOW_WIDTH;
 	fdf->win_y = WINDOW_HEIGHT;
-	fdf->win_id = mlx_new_window(fdf->mlx, fdf->win_x, fdf->win_y, WINDOW_NAME);
+	fdf->win_id = mlx_new_window(fdf->mlx_ptr, fdf->win_x, fdf->win_y, WINDOW_NAME);
 	fdf->image = init_image(fdf->mlx_ptr);
 	if (!fdf->image)
 		close_map(fdf, 5);
@@ -53,14 +42,14 @@ t_map	*init_map(void)
 	return (map);
 }
 
-t_image	*init_image(void *mlx)
+t_image	*init_image(void *mlx_ptr)
 {
 	t_image	*image;
 
 	image = malloc(sizeof(t_image));
 	if (!image)
 		return (NULL);
-	image->image = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	image->image = mlx_new_image(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	image->buffer = mlx_get_data_addr(image->image, &image->pixel_bits, \
 			&image->line_bytes, &image->endian);
 	image->line = NULL;

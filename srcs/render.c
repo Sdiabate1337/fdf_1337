@@ -26,7 +26,7 @@ void	render(t_fdf *fdf)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->image->image, 0, 0);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_id, fdf->image->image, 0, 0);
 	print_menu(fdf);
 }
 

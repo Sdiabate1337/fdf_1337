@@ -1,21 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/04 20:34:48 by cado-car          #+#    #+#              #
-#    Updated: 2021/10/05 22:54:30 by cado-car         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME 		= fdf
-MLX 		= libmlx_Linux.a
+MLX 		= libmlx.a
 LIBFT 		= libft.a
 
 LFT_PATH 	= ./libft/
-MLX_PATH 	= ./mlx_linux/
+MLX_PATH 	= ./minilibx_macos/
 INCLUDES 	= ./include
 SRCDIR 		= ./srcs/
 
@@ -40,17 +29,9 @@ OBJ=$(notdir $(SRC:.c=.o))
 
 #compilation
 CF 			= -Wall -Wextra -Werror
-CC 			= clang
-MLX_CF 		= -lm -lbsd -lmlx -lXext -lX11
+CC 			= gcc
+MLX_CF 		= -lm -lmlx -framework OpenGl -framework AppKit
 CFI 		= -I$(INCLUDES)
-LEAKS 		= valgrind
-LEAKS_FILE	= valgrind-out.txt
-LF 			= --leak-check=full \
-        		--show-leak-kinds=all \
-        		--track-origins=yes \
-        		--verbose \
-        		--log-file=$(LEAKS_FILE) \
-        		./fdf maps/42.fdf
 
 #common commands
 RM =rm -f
@@ -86,14 +67,6 @@ re: fclean all
 
 rebonus: fclean bonus
 
-leaks: 
-	$(LEAKS) $(LF)
-	@printf "$(GR)Leaks log ready! Check valgrind-out.txt $(RC)\n\n"
-
-cleanleaks: 
-	$(RM) $(LEAKS_FILE)
-	@printf "$(GR)Leaks log file deleted.$(RC)\n\n"
-
 clean:
 	@printf "\n$(YE)Cleaning all object files from libft...$(RC)\n"
 	@make clean -C $(LFT_PATH)
@@ -106,11 +79,6 @@ fclean: clean
 	@make fclean -C $(LFT_PATH)
 	@make clean -C $(MLX_PATH)
 	@printf "$(GR)All libraries removed!$(RC)\n\n"
-	make cleanleaks
-
-install: 
-	sudo apt-get install gcc make xorg libxext-dev libbsd-dev -y
-	@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 .PHONY: clean fclean re rebonus all bonus
 

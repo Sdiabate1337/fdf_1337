@@ -13,9 +13,9 @@ int	main(int argc, char **argv)
 	file_name = argv[1];
 	fdf = init_fdf(file_name);
 	render(fdf);
-	mlx_key_hook(fdf->win, &key_handle, fdf);
-	mlx_expose_hook(fdf->win, &expose_handle, fdf);
-	mlx_loop(fdf->mlx);
+	mlx_key_hook(fdf->win_id, &key_handle, fdf);
+	mlx_expose_hook(fdf->win_id, &expose_handle, fdf);
+	mlx_loop(fdf->mlx_ptr);
 }
 
 static int	expose_handle(t_fdf *fdf)

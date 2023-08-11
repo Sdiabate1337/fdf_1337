@@ -7,12 +7,12 @@ void	close_all(t_fdf *fdf, int exit_code)
 {
 	close_coordinates(fdf->map->coordinates, fdf->map->max_x);
 	free(fdf->map);
-	mlx_destroy_image(fdf->mlx, fdf->image->image);
+	mlx_destroy_image(fdf->mlx_ptr, fdf->image->image);
 	free(fdf->image);
-	free(fdf->cam);
-	mlx_destroy_window(fdf->mlx, fdf->win);
-	mlx_destroy_display(fdf->mlx);
-	free(fdf->mlx);
+	free(fdf->view);
+	mlx_destroy_window(fdf->mlx_ptr, fdf->win_id);
+	//mlx_destroy_display(fdf->mlx_ptr);
+	free(fdf->mlx_ptr);
 	free(fdf);
 	error(exit_code);
 }
@@ -21,8 +21,8 @@ void	close_map(t_fdf *fdf, int exit_code)
 {
 	close_coordinates(fdf->map->coordinates, fdf->map->max_x);
 	free(fdf->map);
-	mlx_destroy_window(fdf->mlx, fdf->win);
-	mlx_destroy_display(fdf->mlx);
+	mlx_destroy_window(fdf->mlx_ptr, fdf->win_id);
+	//mlx_ptr_destroy_display(fdf->mlx_ptr);
 	free(fdf);
 	error(exit_code);
 }
