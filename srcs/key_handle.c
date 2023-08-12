@@ -21,7 +21,7 @@ int	key_handle(int keycode, t_fdf *fdf)
 		key_rotate(keycode, fdf);
 	else if (keycode == KEY_P || keycode == KEY_I || keycode == KEY_O)
 		key_project(keycode, fdf);
-	else if (keycode == KEY_SPACE)
+	else if (keycode == KEY_C)
 	{
 		if (fdf->view->color_pallet == FALSE)
 			fdf->view->color_pallet = TRUE;
