@@ -45,6 +45,7 @@
 # define KEY_W		13
 # define KEY_E		14
 # define KEY_C       8
+# define KEY_T       17
 # define KEY_ESC    53
 
 #endif

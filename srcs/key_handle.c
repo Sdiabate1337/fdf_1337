@@ -19,7 +19,7 @@ int	key_handle(int keycode, t_fdf *fdf)
 	else if (keycode == KEY_A || keycode == KEY_S || keycode == KEY_D \
 		|| keycode == KEY_Q || keycode == KEY_W || keycode == KEY_E)
 		key_rotate(keycode, fdf);
-	else if (keycode == KEY_P || keycode == KEY_I || keycode == KEY_O)
+	else if (keycode == KEY_P || keycode == KEY_I || keycode == KEY_T)
 		key_project(keycode, fdf);
 	else if (keycode == KEY_C)
 	{
@@ -80,6 +80,6 @@ static void	key_project(int keycode, t_fdf *fdf)
 		fdf->view->projection = PERSPECTIVE;
 	else if (keycode == KEY_I)
 		fdf->view->projection = ISOMETRIC;
-	else if (keycode == KEY_O)
+	else if (keycode == KEY_T)
 		fdf->view->projection = TOP;
 }
