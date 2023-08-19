@@ -3,43 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:40:26 by cado-car          #+#    #+#             */
-/*   Updated: 2021/08/02 11:10:40 by cado-car         ###   ########.fr       */
+/*   Created: 2023/01/22 03:04:53 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/28 22:10:39 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Allocates (with malloc(3)) and returns a substring from the string ’s’.
-*	The substring begins at index ’start’ and is of maximum size ’len’.
-*	PARAMETERS
-*	#1. The string from which to create the substring.
-*	#2. The start index of the substring in the string ’s’.
-*	#3. The maximum length of the substring.
-*	RETURN VALUES
-*	The substring. NULL if the allocation fails.
-*/
-
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*sstr;
-	size_t	strlen;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	if (s == NULL)
-		return (NULL);
-	strlen = ft_strlen((char *)s);
-	if (start > strlen)
+	if (!s)
+		return (0);
+	if (!*s || start >= ft_strlen(s))
 		return (ft_strdup(""));
-	if (strlen - start >= len)
-		sstr = (char *)malloc((len + 1) * sizeof(char));
+	if (len > (ft_strlen(s) - start))
+		str = malloc(sizeof(char) * (ft_strlen((char *)s) - start + 1));
 	else
-		sstr = (char *)malloc((strlen - start + 1) * sizeof(char));
-	if (sstr == NULL)
-		return (NULL);
-	ft_strlcpy(sstr, (s + start), (len + 1));
-	return (sstr);
+		str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (0);
+	i = -1;
+	j = 0;
+	while (s[++i])
+	{
+		if (i >= start && j < len)
+			str[j++] = s[i];
+	}
+	str[j] = 0;
+	return (str);
 }
+
+/*
+int	main(void)
+{
+	printf("%s", ft_substr(NULL, 0, 0));
+		
+}*/

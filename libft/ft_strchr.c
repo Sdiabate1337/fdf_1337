@@ -3,45 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:24:33 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:25:15 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 02:46:41 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/26 18:09:57 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The strchr() function locates the first occurrence of c (converted to a 
-*	char) in the string pointed to by s. The terminating null character is 
-*	considered to be part of the string; therefore if c is `\0', the functions 
-*	locate the terminating `\0'.
-*	PARAMETERS
-*	#1. The string in which to checks for the occurence of c.
-*	#2. The character to check the occurence of.
-*	RETURN VALUES
-*	The function strchr() returns a pointer to the located 
-*	character, or NULL if the character does not appear in the string.
-*/
-
 #include "libft.h"
+
+//#include <string.h>
+//#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	char	ch;
-
-	ch = (unsigned char)c;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == ch)
-			return ((char *)(&s[i]));
-		i++;
-	}
-	if (ch == '\0')
-		return ((char *)&s[i]);
-	return (NULL);
+	while (*s != (char)c)
+		if (*s++ == '\0')
+			return (NULL);
+	return ((char *)s);
 }
+/*
+int	main(void)
+{
+	printf("%s", ft_strchr(NULL, 'w'));
+	printf("%s", strchr(NULL, 'w'));
+}*/

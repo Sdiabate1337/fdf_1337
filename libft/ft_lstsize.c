@@ -3,35 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:57:11 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 12:01:07 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 02:14:06 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/22 02:25:08 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Counts the number of elements in a list.
-*	PARAMETERS
-*	#1. The beginning of the list.
-*	RETURN VALUES
-*	Length of the list.
-*/
-
 #include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {
-	t_list	*temp;
-	int		count;
+	t_list	*tmp;
+	int		i;
 
-	temp = lst;
-	count = 0;
-	while (temp != NULL)
+	tmp = lst;
+	i = 0;
+	while (tmp)
 	{
-		count++;
-		temp = temp->next;
+		tmp = tmp->next;
+		i++;
 	}
-	return (count);
+	return (i);
 }

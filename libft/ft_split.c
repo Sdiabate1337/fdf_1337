@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:45:55 by cado-car          #+#    #+#             */
-/*   Updated: 2021/09/14 21:34:29 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/08/19 14:51:33 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 14:53:27 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 /*
 *	DESCRIPTION
 *	Allocates (with malloc(3)) and returns an array of strings obtained by 
@@ -24,6 +23,7 @@
 */
 
 #include "libft.h"
+
 void	ft_createsplit(char **result, char const *s, char c);
 size_t	ft_addpart(char **result, const char *prev, size_t size, char c);
 

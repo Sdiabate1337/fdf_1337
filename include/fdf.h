@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 15:01:27 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 15:01:32 by sdiabate         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef FDF_H
 # define FDF_H
 
@@ -17,7 +27,7 @@
 ** folder to guarantee usage by testers. 
 */
 # include <math.h>
-# include "../minilibx_macos/mlx.h"
+# include "../mlx_linux/mlx.h"
 
 /*
 ** My own libft library, completed with previously implemented functions such as
@@ -203,6 +213,7 @@ void	center_to_origin(t_map *map);
 float	scale_to_fit(t_map *map);
 void	reset(t_fdf *fdf);
 void	close_all(t_fdf *fdf, int exit_code);
+int		close_all_x(t_fdf *fdf);
 void	close_map(t_fdf *fdf, int exit_code);
 t_color	*color_init(t_point start, t_point end);
 t_color	*color_pallet_init(int min_color, int max_color);

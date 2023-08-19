@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_handle.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 01:32:06 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 01:32:12 by sdiabate         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../include/fdf.h"
 
 static void	key_translate(int keycode, t_fdf *fdf);
@@ -14,14 +24,14 @@ int	key_handle(int keycode, t_fdf *fdf)
 		|| keycode == KEY_DOWN)
 		key_translate(keycode, fdf);
 	else if (keycode == KEY_PLUS || keycode == KEY_MINUS || keycode == KEY_Z \
-		|| keycode == KEY_X )
+		|| keycode == KEY_X)
 		key_scale(keycode, fdf);
 	else if (keycode == KEY_A || keycode == KEY_S || keycode == KEY_D \
 		|| keycode == KEY_Q || keycode == KEY_W || keycode == KEY_E)
 		key_rotate(keycode, fdf);
-	else if (keycode == KEY_P || keycode == KEY_I || keycode == KEY_T)
+	else if (keycode == KEY_P || keycode == KEY_I || keycode == KEY_O)
 		key_project(keycode, fdf);
-	else if (keycode == KEY_C)
+	else if (keycode == KEY_L)
 	{
 		if (fdf->view->color_pallet == FALSE)
 			fdf->view->color_pallet = TRUE;
@@ -80,6 +90,6 @@ static void	key_project(int keycode, t_fdf *fdf)
 		fdf->view->projection = PERSPECTIVE;
 	else if (keycode == KEY_I)
 		fdf->view->projection = ISOMETRIC;
-	else if (keycode == KEY_T)
+	else if (keycode == KEY_O)
 		fdf->view->projection = TOP;
 }

@@ -3,49 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:24:57 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:27:54 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 02:54:15 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/27 02:32:38 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	strlcat() appends string src to the end of dst.  It will append at most 
-*	dstsize - strlen(dst) - 1 characters.  It will then NUL-terminate, unless 
-*	dstsize is 0 or the original dst string was longer than dstsize (in practice 
-*	this should not happen as it means that either dstsize is incorrect or that 
-*	dst is not a proper string).
-*	PARAMETERS
-*	#1. The destiny string in which to concatenate.
-*	#2. The source string to concatenate.
-*	#3. The total number of bytes in destiny.
-*	RETURN VALUES
-*	the strlcat() function returns the length of the string it tried to create.
-*/
-
 #include "libft.h"
+
+//#include <string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	index_src;
-	size_t	len_dst;
-	size_t	len_src;
+	size_t	c;
+	size_t	d;
 
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen((char *)src);
-	if (dstsize <= len_dst)
-		return (dstsize + len_src);
-	index_src = 0;
-	while (src[index_src] != '\0' && dstsize > (len_dst + 1))
+	if (!dst && !dstsize)
+		return (ft_strlen(src));
+	if (dstsize <= ft_strlen(dst))
+		return (dstsize + ft_strlen(src));
+	c = ft_strlen(dst);
+	d = 0;
+	while (src[d] != '\0' && c + 1 < dstsize)
 	{
-		dst[len_dst] = src[index_src];
-		index_src++;
-		len_dst++;
+		dst[c] = src[d];
+		c++;
+		d++;
 	}
-	dst[len_dst] = '\0';
-	return (len_dst + ft_strlen((char *)(&src[index_src])));
+	dst[c] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[d]));
 }
+/*
+int	main(void)
+{
+	printf("%zu", ft_strlcat(NULL, "sekou" , 0));
+	//printf("%zu", strlcat(NULL, "sekou", 0));
+}*/

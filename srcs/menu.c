@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 01:32:33 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 01:32:42 by sdiabate         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../include/fdf.h"
 
 static char	*get_projection_name(t_fdf *fdf);
@@ -26,8 +36,8 @@ void	print_menu(t_fdf *fdf)
 	mlx_string_put(mlx, win, 50, y += 35, C_TEXT, "To change projection view:");
 	mlx_string_put(mlx, win, 50, y += 20, C_TEXT, "Isometric: press 'I'");
 	mlx_string_put(mlx, win, 50, y += 20, C_TEXT, "Perspective: press 'P'");
-	mlx_string_put(mlx, win, 50, y += 20, C_TEXT, "Top View: press 'T'");
-	mlx_string_put(mlx, win, 50, y += 35, C_TEXT, "Colors: press 'C'");
+	mlx_string_put(mlx, win, 50, y += 20, C_TEXT, "Top View: press 'O'");
+	mlx_string_put(mlx, win, 50, y += 35, C_TEXT, "Colors: press 'L'");
 	mlx_string_put(mlx, win, 50, y += 35, C_TEXT, "Reset view: press 'R'");
 }
 

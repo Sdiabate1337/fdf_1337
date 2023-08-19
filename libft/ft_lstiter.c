@@ -3,34 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 12:25:13 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 12:28:34 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 01:40:39 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/22 01:41:02 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Iterates the list ’lst’ and applies the function ’f’ to the content of each 
-*	element.
-*	PARAMETERS
-*	#1. The adress of a pointer to an element.
-*	#2. The adress of the function used to iterate on the list.
-*	RETURN VALUES
-*	-
-*/
-
 #include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*list_ptr;
-
-	list_ptr = lst;
-	while (list_ptr != NULL)
+	while (lst)
 	{
-		(*f)(list_ptr->content);
-		list_ptr = list_ptr->next;
+		f(lst->content);
+		lst = lst->next;
 	}
 }

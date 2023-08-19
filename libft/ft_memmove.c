@@ -3,50 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:23:04 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:23:14 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 02:29:47 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/22 02:30:24 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The memmove() function copies len bytes from string src to string dst.  
-*	The two strings may overlap; the copy is always done in a nondestructive 
-*	manner.
-*	PARAMETERS
-*	#1. The destiny pointer in which to copy.
-*	#2. The source pointer to copy.
-*	#3. The number of bytes to copy the source string.
-*	RETURN VALUES
-*	The memmove() function returns the original value of dst.
-*/
-
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
+	unsigned char	*s;
+	unsigned char	*d;
 	size_t			i;
-	unsigned char	*dstc;
-	unsigned char	*srcc;
 
-	if ((dst == NULL) && (src == NULL))
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	i = 0;
+	if (!src && !dst)
 		return (NULL);
-	dstc = (unsigned char *)dst;
-	srcc = (unsigned char *)src;
-	i = 1;
-	if (srcc < dstc)
+	if (d > s)
+		while (len-- > 0)
+			d[len] = s[len];
+	else
 	{
-		while (i <= len)
+		while (i < len)
 		{
-			dstc[len - i] = srcc[len - i];
+			d[i] = s[i];
 			i++;
 		}
 	}
-	else
-		ft_memcpy(dstc, srcc, len);
-	return (dst);
+	return ((void *)dst);
 }

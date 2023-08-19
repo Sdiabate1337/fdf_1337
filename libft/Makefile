@@ -3,50 +3,45 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/31 11:45:32 by cado-car          #+#    #+#              #
-#    Updated: 2021/07/31 11:45:32 by cado-car         ###   ########lyon.fr    #
+#    Created: 2023/08/19 15:07:14 by sdiabate          #+#    #+#              #
+#    Updated: 2023/08/19 15:07:29 by sdiabate         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+NAME= libft.a
+LIBFT_SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
+			ft_memcmp.c ft_strlen.c ft_strdup.c ft_strlcpy.c ft_strchr.c \
+			ft_strrchr.c ft_strnstr.c ft_strlcat.c ft_strncmp.c ft_atoi.c \
+			ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+			ft_toupper.c ft_tolower.c ft_strmapi.c ft_substr.c ft_strjoin.c \
+			ft_strtrim.c ft_split.c ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c \
+			ft_putnbr_fd.c ft_calloc.c ft_putendl_fd.c ft_striteri.c  ft_atoi_base.c get_next_line.c
+BONUS_SRC = ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_lstdelone.c ft_lstclear.c ft_lstadd_front.c ft_lstadd_back.c ft_lstiter.c
 
-NAME		= libft.a 
+OBJ = $(LIBFT_SRC:.c=.o)
+B_OBJ = $(BONUS_SRC:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+green = \033[0;32m
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-LIB			= ar -rcs
-LIB1		= ranlib
-RM			= /bin/rm -f
+all: $(NAME)
 
-INCS		= libft.h
-SRCS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-			ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
-			ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
-			ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
-			ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstdelone.c ft_lstclear.c ft_lstadd_back.c ft_lstiter.c \
-			ft_lstmap.c get_next_line.c ft_atoi_base.c ft_uitoa_base.c 
+$(NAME): $(OBJ)
+	@echo "$(green)Creating $@"
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+clean:
+	@rm -f $(OBJ) $(B_OBJ)
 
-OBJS		= $(SRCS:.c=.o)
+fclean: clean
+	@rm -f $(NAME)
 
-all: 		$(NAME)
+re: all fclean
 
-$(NAME):	$(OBJS) $(INCS)
-			$(LIB)	$(NAME) $(OBJS)
-			$(LIB1) $(NAME)
+bonus: $(OBJ) $(B_OBJ)
+	@echo "$(green)Creating $@"
+	@ar rc $(NAME) $(OBJ) $(B_OBJ)
+	@ranlib $(NAME)
 
-.c.o: 		
-			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
-clean:		
-			$(RM) $(OBJS) $(OBJS_BONUS)
-
-fclean:		clean
-			$(RM) $(NAME)
-
-re:			fclean all
-
-.PHONY:		all clean fclean re
+.PHONY: all clean fclean bonus re

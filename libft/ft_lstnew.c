@@ -3,34 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:57:06 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:59:26 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 01:54:03 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/22 02:13:55 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Allocates (with malloc(3)) and returns a new element. The variable ’content’ 
-*	is initialized with the value of the parameter ’content’. The variable 
-*	’next’ is initialized to NULL.
-*	PARAMETERS
-*	#1. The content to create the new element with.
-*	RETURN VALUES
-*	The new element.
-*/
-
 #include "libft.h"
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*elem;
+	t_list	*new;
 
-	elem = malloc(sizeof(t_list));
-	if (elem == NULL)
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	elem->content = content;
-	elem->next = NULL;
-	return (elem);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

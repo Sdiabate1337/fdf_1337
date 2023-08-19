@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 01:31:16 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 01:31:25 by sdiabate         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../include/fdf.h"
 
 void	error(int exit_code)
@@ -16,7 +26,7 @@ void	error(int exit_code)
 	else if (exit_code == 5)
 		ft_putstr_fd("Cannot create image.\n", 1);
 	else if (exit_code == 6)
-		ft_putstr_fd("Cannot initialize camera.\n", 1);
+		ft_putstr_fd("Cannot initialize view.\n", 1);
 	else if (exit_code == 7)
 		ft_putstr_fd("Unable to render.\n", 1);
 	else if (exit_code == 8)

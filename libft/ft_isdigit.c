@@ -3,31 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:21:44 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/30 20:21:44 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 01:24:22 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/22 14:51:49 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <ctype.h>
-*	DESCRIPTION
-*	The isdigit() function tests for a decimal digit character.
-*	PARAMETERS
-*	#1. The character to test.
-*	RETURN VALUES
-*	The isdigit() function returns zero if the character tests false and 
-*	returns non-zero if the character tests true.
-*/
-
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	ft_isdigit(int a)
 {
-	if (c >= '0' && c <= '9')
+	if (a >= '0' && a <= '9')
 		return (1);
-	else
-		return (0);
+	return (0);
 }
+/*
+int	main(void)
+{
+	printf("%d\t%d", ft_isdigit(10), ft_isdigit(4));
+}*/

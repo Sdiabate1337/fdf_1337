@@ -3,44 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:25:16 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:32:17 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 03:00:33 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/26 22:10:46 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-* 	The strncmp() function compares not more than n characters. Because 
-*	strncmp() is designed for comparing strings rather than binary data, 
-*	characters that appear after a `\0' character are not compared.
-*	PARAMETERS
-*	#1. The first str to compare.
-*	#2. The second str to compare.
-*	#3. The number of bytes to compare the two strings.
-*	RETURN VALUES
-*	The strncmp() function returns an integer greater than, equal to, or less 
-*	than 0, according as the string s1 is greater than, equal to, or less than 
-*	the string s2.  The comparison is done using unsigned characters, so that 
-*	`\200' is greater than `\0'.
-*/
-
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	while ((*s1 && *s2) != '\0' && n > 0)
+	unsigned int	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
 	{
-		if (*s1 != *s2)
-			break ;
-		s1++;
-		s2++;
-		n--;
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	if (n == 0)
-		return (0);
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	return (0);
 }
+/*
+ int main()
+ {
+ 	char *s1 = "diabate";
+    char *s2 = "diabsekou";
+ 	printf("1-%d\n",ft_strncmp(NULL,s2,6));
+ 	printf("1-%d\n",strncmp(NULL, s2, 6));
+ }*/

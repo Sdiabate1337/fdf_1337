@@ -1,10 +1,20 @@
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/19 15:08:56 by sdiabate          #+#    #+#              #
+#    Updated: 2023/08/19 15:09:15 by sdiabate         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 NAME 		= fdf
 MLX 		= libmlx.a
 LIBFT 		= libft.a
 
 LFT_PATH 	= ./libft/
-MLX_PATH 	= ./minilibx_macos/
+MLX_PATH 	= ./mlx_linux/
 INCLUDES 	= ./include
 SRCDIR 		= ./srcs/
 
@@ -30,7 +40,8 @@ OBJ=$(notdir $(SRC:.c=.o))
 #compilation
 CF 			= -Wall -Wextra -Werror
 CC 			= gcc
-MLX_CF 		= -lm -lmlx -framework OpenGl -framework AppKit
+MLX_CF 		= -lm -lmlx -lbsd -lmlx -lXext -lX11
+
 CFI 		= -I$(INCLUDES)
 
 #common commands

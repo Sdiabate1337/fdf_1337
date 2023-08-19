@@ -3,44 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:25:26 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:34:21 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 03:01:43 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/27 04:49:00 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The strchr() function locates the last occurrence of c (converted to a 
-*	char) in the string pointed to by s. The terminating null character is 
-*	considered to be part of the string; therefore if c is `\0', the functions 
-*	locate the terminating `\0'.
-*	PARAMETERS
-*	#1. The string in which to check the occurence of c.
-*	#2. The character to check the occurence of.
-*	RETURN VALUES
-*	The function strrchr() returns a pointer to the located 
-*	character, or NULL if the character does not appear in the string.
-*/
-
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(char *str, char c)
 {
-	int		len;
-	char	ch;
+	int	i;
 
-	ch = (unsigned char)c;
-	len = ft_strlen((char *)s);
-	if (ch == '\0')
-		return ((char *)(&s[len]));
-	while (--len >= 0)
+	i = ft_strlen((const char *)str);
+	while (i >= 0)
 	{
-		if (s[len] == ch)
-			return ((char *)(&s[len]));
+		if (str[i] == c)
+			return (&str[i]);
+		i--;
 	}
-	return (NULL);
+	return (0);
 }
+/*
+int	main(void)
+{
+	printf("%s\t", ft_strrchr(NULL, '\0'));
+}*/

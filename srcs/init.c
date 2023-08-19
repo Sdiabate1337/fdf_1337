@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 01:31:35 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/08/19 01:31:41 by sdiabate         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../include/fdf.h"
 
 t_fdf	*init_fdf(char *file_name)
@@ -17,7 +27,8 @@ t_fdf	*init_fdf(char *file_name)
 	fdf->mlx_ptr = mlx_init();
 	fdf->win_x = WINDOW_WIDTH;
 	fdf->win_y = WINDOW_HEIGHT;
-	fdf->win_id = mlx_new_window(fdf->mlx_ptr, fdf->win_x, fdf->win_y, WINDOW_NAME);
+	fdf->win_id = mlx_new_window(fdf->mlx_ptr,
+			fdf->win_x, fdf->win_y, WINDOW_NAME);
 	fdf->image = init_image(fdf->mlx_ptr);
 	if (!fdf->image)
 		close_map(fdf, 5);

@@ -3,35 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: sdiabate <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:46:00 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 22:31:00 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2023/01/22 02:34:06 by sdiabate          #+#    #+#             */
+/*   Updated: 2023/01/26 17:45:02 by sdiabate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Outputs the string ’s’ to the given file descriptor.
-*	PARAMETERS
-*	#1. The string to output.
-*	#2. The file descriptor on which to write.
-*	RETURN VALUES
-*	-
-*/
-
 #include "libft.h"
+
+//#include <stdio.h>
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
+	if (s)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		i = 0;
+		while (s[i])
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }
+/*
+int	main(void)
+{
+	ft_putstr_fd("\0", -1);	
+	ft_putstr_fd(NULL, 1);
+	ft_putstr_fd("hello", 1);
+}*/
